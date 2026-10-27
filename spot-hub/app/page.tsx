@@ -18,12 +18,14 @@ export default function Home() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === "spot") {
-      localStorage.setItem("auth_status", "granted");
-      setIsAuthenticated(true);
-      setError("");
-    } else {
-      setError("Błędne hasło!");
+  const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_APP_PASSWORD;
+
+  if (password === CORRECT_PASSWORD) {
+    localStorage.setItem("auth_status", "granted");
+    setIsAuthenticated(true);
+    setError("");
+  } else {
+    setError("Błędne hasło!");
     }
   };
 
